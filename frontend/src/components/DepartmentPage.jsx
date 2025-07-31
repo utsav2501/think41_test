@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios';
 
 function DepartmentPage() {
     const {id} = useParams();
