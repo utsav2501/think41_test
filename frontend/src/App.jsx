@@ -5,6 +5,8 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ProductList from './components/ProductList.jsx'
 import ProductDetail from './components/ProductDetail.jsx'
+import DepartmentList from './components/DepartmentList.jsx'
+import DepartmentPage from './components/DepartmentPage.jsx'
 
 function App() {
 
@@ -15,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/department" element={<DepartmentList />} />
+          <Route path="/department/:id" element={<DepartmentPage />} />
          
         </Routes>
       </Router>
