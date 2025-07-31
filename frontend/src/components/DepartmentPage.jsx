@@ -24,9 +24,7 @@ function DepartmentPage() {
   return (
     <div>
       <h2>department detail</h2>
-      {department.map(()=>(
-        <span key={department.id}>{department.name}</span>
-      ))}
+      <span>{department.name}</span>
     </div>
   )
 }
