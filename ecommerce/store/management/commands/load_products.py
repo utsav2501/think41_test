@@ -10,14 +10,21 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         
-        with open('products.csv', newline='') as csvfile:
+        with open('products.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 department, _ = Department.objects.get_or_create(name=row['department'])
                 Product.objects.create(
+                    
+                    cost=row['cost'],
+                    category = row['category'],
                     name=row['name'],
+                    brand = row['brand'],
+                    retail_price = row['retail_price'],
+                    department = row[department],
                     description=row['description'],
-                    price=row['price'],
-                    department=department
+                    
+                    inventory = row['inventory'],
+                    created_at = datetime.strptime(row['created_at'], "%Y-%m-%d")
                 )
         self.stdout.write(self.style.SUCCESS('Successfully loaded products from CSV file'))
