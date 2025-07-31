@@ -23,9 +23,12 @@ function ProductDetail() {
   return (
     <div>
         <h2>{product.name}</h2>
+        <p>Category:{product.category}</p>
         <p>{product.description}</p>
-        <p>Price: ${product.price}</p>  
-        <p>Department: {product.department.name}</p>
+        <p>Price: ${product.cost}</p>  
+        <p>inventory:{product.inventory}</p>
+        <p>Added:{newDate(product.created_at).toDateString()}</p>
+        
       
     </div>
   )

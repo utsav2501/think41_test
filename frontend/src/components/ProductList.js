@@ -5,11 +5,11 @@ import DepartmentFilter from './DepartmentFilter';
 
 function ProductList() {
     const [products, setProducts] = useState([]);
-    const [departmentId, setDepartmentId] = useState('');
+    
 
     useEffect(()=>{
         let url = 'http://127.0.0.1:8000/api/products/';
-        if(departmentId) url+= `?department=${departmentId}`;
+        
         axios.get(url)  
         .then(res=> {
             setProducts(res.data);
@@ -17,20 +17,19 @@ function ProductList() {
         .catch(err => { 
             console.log(err);
         });
-    }, [departmentId]);
+    }, []);
   return (
     <div>
       <h2>Product List</h2>
-      <DepartmentFilter setDepartmentId={setDepartmentId} />
-      <div style={{display:'flex', flexWrap: 'wrap'}}>
-        {products.map(product => (
-          <div key={product.id} style={{border: '1px solid #ccc', margin: '10px', padding: '10px', width: '200px'}}>
-            <Link to={`/product/${product.id}`}>
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
-            </Link>
-          </div>
+      <div>
+        {products.map(product => (  
+            <div className='card' key={product.id}>
+                <h3>{product.name}</h3> 
+                <p>{product.description}</p>
+                <p>Price: ${product.retail_price}</p>   
+                <p>Department: {product.department ? product.department.name : 'N/A'}</p>
+                <Link to={`${product.id}`}>View Details</Link>
+            </div>
         ))}
       </div>
     </div>
