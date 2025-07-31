@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom';
-import DepartmentFilter from './DepartmentFilter';
+
 
 function ProductList() {
     const [products, setProducts] = useState([]);
@@ -28,7 +28,7 @@ function ProductList() {
                 <p>{product.description}</p>
                 <p>Price: ${product.retail_price}</p>   
                 <p>Department: {product.department ? product.department.name : 'N/A'}</p>
-                <Link to={`${product.id}`}>View Details</Link>
+                <Link to={`/product/${product.id}`}>View Details</Link>
             </div>
         ))}
       </div>
