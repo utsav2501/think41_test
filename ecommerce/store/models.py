@@ -42,6 +42,7 @@ class Product(models.Model):
     retail_price = models.DecimalField(max_digits=10, decimal_places =2, default=0.00)
     inventory = models.IntegerField(null=True)
     created_at = models.DateTimeField(default=timezone.now)
+    department = models.ForeignKey(Department, related_name='products', on_delete=models.CASCADE, default=None)
     
 
     def __str__(self):
